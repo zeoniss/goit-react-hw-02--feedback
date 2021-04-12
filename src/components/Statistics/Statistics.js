@@ -23,7 +23,7 @@ Statistics.propTypes = {
   neutral: propTypes.number.isRequired,
   bad: propTypes.number.isRequired,
   total: propTypes.number.isRequired,
-  positivePercantage: propTypes.func.isRequired,
+  positivePercantage: propTypes.number.isRequired,
 };
 
 export default Statistics;
