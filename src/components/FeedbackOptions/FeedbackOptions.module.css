@@ -21,7 +21,7 @@
   outline: transparent;
   border-radius: 10px;
   border: transparent;
-  background-color: rgb(141, 194, 243);
+  background-color: tomato;
 }
 .button:hover {
   border: 2px solid white;
