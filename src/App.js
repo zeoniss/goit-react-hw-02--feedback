@@ -2,7 +2,8 @@ import { Component } from 'react';
 import FeedbackOptions from './components/FeedbackOptions/FeedbackOptions';
 import Section from './components/Section/Section';
 import Statistics from './components/Statistics/Statistics';
-import { FEEDBACK_OPTIONS } from './data/constans';
+import { FEEDBACK_OPTIONS } from './components/data/constans';
+import '../src/index.css';
 
 class App extends Component {
   state = {
@@ -23,31 +24,35 @@ class App extends Component {
   //Подсчитываем количество позитивных отзывов (в процентах)
   countPositivePercantage = () => {
     const { good } = this.state;
-    const total = this.countTotalFeedback;
-    return total > 0 ? Math.round((good / total) * 100) : 0;
+    const total = this.countTotalFeedback();
+    return total ? Math.round((good / total) * 100) : 0;
   };
   render() {
+    console.log(this.state);
     const { good, neutral, bad } = this.state;
     const total = this.countTotalFeedback();
     const positivePercantage = this.countPositivePercantage();
-    return (
-      <div>
-        <Section title="Please leave feedback">
-          <FeedbackOptions
-            options={FEEDBACK_OPTIONS}
-            onLeaveFeedback={this.handleFeedback}
-          />
-        </Section>
 
-        <Section title="Statistics">
-          <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={total}
-            positivePercantage={positivePercantage}
-          />
-        </Section>
+    return (
+      <div className="Feedback">
+        <>
+          <Section title="Please leave feedback">
+            <FeedbackOptions
+              options={FEEDBACK_OPTIONS}
+              onLeaveFeedback={this.handleFeedback}
+            />
+          </Section>
+
+          <Section title="Statistics">
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={total}
+              positivePercantage={positivePercantage}
+            />
+          </Section>
+        </>
       </div>
     );
   }

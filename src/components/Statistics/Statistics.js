@@ -1,12 +1,12 @@
 import propTypes from 'prop-types';
 import Notification from '../Notification/Notification';
-
+import s from './Statistics.module.css';
 const Statistics = ({ good, neutral, bad, total, positivePercantage }) => {
   return (
     <>
       {total > 0 && (
-        <ul>
-          <li>Good: {good}</li>
+        <ul className={s.buttonList}>
+          <li className={s.buttonList__item}>Good: {good}</li>
           <li>Neutral: {neutral}</li>
           <li>Bad: {bad}</li>
           <li>Total: {total}</li>
